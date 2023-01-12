@@ -1,3 +1,5 @@
+using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +16,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(); // wwwroot - used for static files like css/jss to style the website
 
 app.UseRouting();
 
@@ -22,6 +24,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Home}/{action=Index}/{id?}" // "domain/controller/action/id" "https://localhost:1337/{controller}/action/id", id? - means that id is optional
+    ); 
 
 app.Run();
