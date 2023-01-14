@@ -24,7 +24,11 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}" // "domain/controller/action/id" "https://localhost:1337/{controller}/action/id", id? - means that id is optional
-    ); 
+    pattern: "{controller=Home}/{action=Index}/{id?}"); // "domain/controller/action/id" "https://localhost:1337/{controller}/action/id", id? - means that id is optional
+
+app.MapControllerRoute(
+    name: "appointment", 
+    pattern: "{controller=Appointment}/{action=Index}/{id?}",
+    defaults: new { });
 
 app.Run();
