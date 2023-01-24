@@ -1,0 +1,9 @@
+PMC (package manager console) Command		dotnet CLI Command	Usage
+
+add-migration <migration name>			Add <migration name>	Creates a migration by adding a migration snapshot.
+
+remove migration <migration name>		Remove			Remove the last migration snapshot.
+	
+update-database					Update			Updates the database shema based on the last migration snapshot.
+
+script-migration				Script			Generates a SQL script using all the migration snapshos.
