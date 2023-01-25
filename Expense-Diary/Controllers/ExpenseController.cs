@@ -41,5 +41,42 @@ namespace Expense_Diary.Controllers
 
             return View(obj);
         }
+
+        // GET-Delete Expense, works with the view
+        public IActionResult Delete(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Expense.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        //POST-Delete Expense, works with the database
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeleteExpense(int? id)
+        {
+            var obj = _db.Expense.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            _db.Expense.Remove(obj);
+            _db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

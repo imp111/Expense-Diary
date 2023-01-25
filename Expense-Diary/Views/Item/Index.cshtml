@@ -37,9 +37,9 @@
                         <td width="25%">@item.ItemName</td>
                         <td width="25%">@item.Borrower</td>
                         <td width="25%">@item.Lander</td>
-                        <td width="25%">
-                            <a class="btn btn-primary" asp-area="" asp-controller="Item" asp-action="DeleteItemPost">Delete</a>
-                            <a class="btn btn-primary" asp-area="" asp-controller="Item" asp-action="DeleteItem">Update</a>
+                        <td width="15%" class="w-100 btn-group" role="group">
+                            <a class="btn btn-danger mx-1" asp-route-Id = "@item.Id" asp-controller="Item" asp-action="Delete">Delete</a>
+                            <a class="btn btn-dark mx-1" asp-route-Id="@item.Id" asp-controller="Item" asp-action="Update">Update</a>
                         </td>
                     </tr>
                 }
