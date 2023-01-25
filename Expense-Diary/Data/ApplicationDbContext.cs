@@ -10,6 +10,7 @@ namespace Expense_Diary.Data
             
         }
 
-        public DbSet<Item>? Items { get; set; }
+        public DbSet<Item>? Items { get; set; } // Items Database
+        public DbSet<Expense>? Expense { get; set; } // Expenses Database
     }
 }
