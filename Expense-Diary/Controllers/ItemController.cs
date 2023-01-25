@@ -18,5 +18,10 @@ namespace Expense_Diary.Controllers
             IEnumerable<Item> objList = _db.Items;
             return View(objList);
         }
+
+        public IActionResult CreateItem()
+        {
+            return View();
+        }
     }
 }
