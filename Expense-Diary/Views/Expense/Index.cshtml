@@ -6,7 +6,7 @@
             <h2 class="text-primary">Expense List:</h2>
         </div>
         <div class="col-6">
-            <a class="btn btn-primary" asp-area="" asp-controller="Expense" asp-action="CreateItem">Create New Expense</a>
+            <a class="btn btn-primary" asp-area="" asp-controller="Expense" asp-action="CreateExpense">Create New Expense</a>
         </div>
     </div>
     <br />
@@ -22,6 +22,9 @@
                     <th>
                         Amount
                     </th>
+                    <th>
+                        Options
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -30,7 +33,10 @@
                     <tr>
                         <td width="30%">@expense.Name</td>
                         <td width="30%">@expense.Amount</td>
-                        <td width="30%">buttons</td>
+                        <td width="30%">
+                            <a class="btn btn-primary" asp-area="" asp-controller="Expense" asp-action="CreateExpense">Delete</a>
+                            <a class="btn btn-primary" asp-area="" asp-controller="Expense" asp-action="CreateExpense">Update</a>
+                        </td>
                     </tr>
                 }
             </tbody>

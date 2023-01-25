@@ -19,5 +19,22 @@ namespace Expense_Diary.Controllers
             IEnumerable<Expense> objList = _db.Expense;
             return View(objList); // returns a view with all the items in the database
         }
+
+        // GET-Create Item
+        public IActionResult CreateExpense()
+        {
+            return View();
+        }
+
+        //POST-Create Item
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreateExpense(Expense obj)
+        {
+            _db.Expense.Add(obj); // adds the obj to the database
+            _db.SaveChanges(); // saves the changes
+
+            return RedirectToAction("Index"); // starts the index action
+        }
     }
 }
