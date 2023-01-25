@@ -31,10 +31,15 @@ namespace Expense_Diary.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateExpense(Expense obj)
         {
-            _db.Expense.Add(obj); // adds the obj to the database
-            _db.SaveChanges(); // saves the changes
+            if (ModelState.IsValid)
+            {
+                _db.Expense.Add(obj); // adds the obj to the database
+                _db.SaveChanges(); // saves the changes
 
-            return RedirectToAction("Index"); // starts the index action
+                return RedirectToAction("Index"); // starts the index action
+            }
+
+            return View(obj);
         }
     }
 }

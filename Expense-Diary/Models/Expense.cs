@@ -8,10 +8,13 @@ namespace Expense_Diary.Models
         [Key]
         public int Id { get; set; }
 
-        [DisplayName("Expense Name")]
+        [DisplayName("Expense Name:")]
+        [Required]
         public string? Name { get; set; }
 
-        [DisplayName("Amount")]
+        [DisplayName("Amount:")]
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Amount must be greater than 0.01")]
         public double? Amount { get; set; }
     }
 }
