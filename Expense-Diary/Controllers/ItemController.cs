@@ -22,7 +22,7 @@ namespace Expense_Diary.Controllers
         }
 
         // GET-Create Item
-        public IActionResult CreateItem()
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace Expense_Diary.Controllers
         //POST-Create Item
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult CreateItem(Item obj)
+        public IActionResult Create(Item obj)
         {
             if (ModelState.IsValid)
             {

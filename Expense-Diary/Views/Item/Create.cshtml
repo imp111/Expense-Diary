@@ -1,6 +1,7 @@
 ﻿@model Expense_Diary.Models.Item
 
-<form method="post" asp-action="CreateItem">
+<form method="post" asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="border p-3">
         <div class="form-group row">
             <h2 class="text-black-50 pl-3">Add Item</h2>
@@ -25,14 +26,17 @@
                 <div class="form-group row">
                     <div class="col-4">
                         <input asp-for="ItemName" class="form-control"/>
+                        <span asp-validation-for="ItemName" class="text-danger"></span>
                     </div>
 
                     <div class="col-4">
                         <input asp-for="Borrower" class="form-control" />
+                        <span asp-validation-for="Borrower" class="text-danger"></span>
                     </div>
 
                     <div class="col-4">
                         <input asp-for="Lander" class="form-control" />
+                        <span asp-validation-for="Lander" class="text-danger"></span>
                     </div>
                 </div>
 
