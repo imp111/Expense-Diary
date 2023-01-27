@@ -32,13 +32,18 @@ namespace Expense_Diary.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult CreateItem(Item obj)
         {
-            _db.Items.Add(obj); // adds the obj to the database
-            _db.SaveChanges(); // saves the changes
+            if (ModelState.IsValid)
+            {
+                _db.Items.Add(obj); // adds the obj to the database
+                _db.SaveChanges(); // saves the changes
 
-            return RedirectToAction("Index"); // starts the index action
+                return RedirectToAction("Index"); // starts the index action
+            }
+
+            return View(obj);
         }
 
-        // DELETE Item GET
+        // GET Delete action
         public IActionResult DeleteItem(int? id)
         {
             if (id == 0 || id == null)
@@ -56,7 +61,7 @@ namespace Expense_Diary.Controllers
             return View(obj);
         }
 
-        // DELETE Item POST
+        // POST Delete action
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteItemPost(int? id)
@@ -72,6 +77,40 @@ namespace Expense_Diary.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("Index");
+        }
+
+        // GET Delete action
+        public IActionResult Update(int? id)
+        {
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _db.Items.Find(id);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);
+        }
+
+        //POST-Update Item
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Item obj)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Items.Update(obj); // adds the obj to the database
+                _db.SaveChanges(); // saves the changes
+
+                return RedirectToAction("Index"); // starts the index action
+            }
+
+            return View(obj);
         }
     }
 }
