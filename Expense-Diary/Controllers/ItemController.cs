@@ -44,7 +44,7 @@ namespace Expense_Diary.Controllers
         }
 
         // GET Delete action
-        public IActionResult DeleteItem(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == 0 || id == null)
             {
@@ -64,7 +64,7 @@ namespace Expense_Diary.Controllers
         // POST Delete action
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult DeleteItemPost(int? id)
+        public IActionResult DeleteItem(int? id)
         {
             var obj = _db.Items.Find(id);
 
